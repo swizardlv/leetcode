@@ -11,9 +11,9 @@ Given s = "hello", return "olleh".
  */
 var reverseString = function(s) {
     var _s = [];
-    var len=s.length;
-    for (var i = len; i >=0; i--) {
-        _s[len-i]=s[i];
+    var len = s.length;
+    for (var i = len - 1; i >= 0; i--) {
+        _s[len - i] = s[i];
     }
     return _s.join('');
 };
