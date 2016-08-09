@@ -10,3 +10,8 @@ Could you do it without any loop/recursion in O(1) runtime?
 
 
 */
+function addDigit(num) {
+    if (num / 9 > 0 && num % 9 == 0)
+        return 9;
+    else return num % 9;
+}
