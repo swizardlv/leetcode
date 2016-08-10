@@ -12,7 +12,7 @@ Could you do it without any loop/recursion in O(1) runtime?
 */
 function addDigit(num) {
     var _return = num % 9;
-    if (_return == 0 && num>0)
+    if (_return === 0 && num>0)
         _return = 9;
     return _return;
 }
