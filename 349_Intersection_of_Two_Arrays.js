@@ -12,5 +12,24 @@ The result can be in any order.*/
  * @return {number[]}
  */
 var intersection = function(nums1, nums2) {
+    var _return = [];
 
+    function _intersection(_nums1, _nums2) {
+        var _len = _nums1.length;
+        for (var i = 0; i < _len; i++) {
+            var _tmp = _nums1[i];
+            if (_return.indexOf(_tmp) == -1 && _nums2.indexOf(_tmp) > -1) {
+                _return.push(_tmp);
+            }
+        }
+    }
+
+    var len1 = nums1.length;
+    var len2 = nums2.length;
+    if (len2 > len1) {
+        _intersection(nums1, nums2);
+    } else {
+        _intersection(nums2, nums1);
+    }
+    return _return;
 };
