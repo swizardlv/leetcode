@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test leetcode</title>
+        <script type="text/javascript">
+            var startTime = new Date();
+            var rectangles = [
+  [1,1,3,3],
+  [3,1,4,2],
+  [3,2,4,4],
+  [1,3,2,4],
+  [2,3,3,4]
+];
+function getTR(rectangles) {
+  var startRect=rectangles[0];
+  var tr=[startRect[2],startRect[3]];
+  for (var i = 1; i < rectangles.length; i++) {
+    var rect=rectangles[i];
+    if (rect[2]>tr[0]) {
+      tr=[rect[2],rect[3]];
+    }else if (rect[2]==tr[0] && rect[3]>tr[1]) {
+      tr=[rect[2],rect[3]];
+    }
+
+  }
+  return tr;
+}
+            console.log(getTR(rectangles));
+            var endTime = new Date();
+            console.log(endTime - startTime);
+        </script>
+    </head>
+    <body></body>
+</html>
