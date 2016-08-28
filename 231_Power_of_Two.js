@@ -14,5 +14,5 @@ var isPowerOfTwo = function(n) {
     }
     if (n % 2 == 1) {
         return false;
-    } else return (n / 2);
+    } else return isPowerOfTwo(n / 2);
 };
