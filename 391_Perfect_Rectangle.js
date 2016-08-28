@@ -56,9 +56,10 @@ Return false. Because two of the rectangles overlap with each other.
  * @return {boolean}
  */
 var isRectangleCover = function(rectangles) {
-    function getBL(rectangles) {
+    function getBounds(rectangles) {
         var startRect = rectangles[0];
         var bl = [startRect[0], startRect[1]];
+        var tr = [startRect[2], startRect[3]];
         for (var i = 1; i < rectangles.length; i++) {
             var rect = rectangles[i];
             if (rect[0] < bl[0]) {
@@ -68,28 +69,19 @@ var isRectangleCover = function(rectangles) {
             if (rect[1] < bl[1]) {
                 bl[1] = rect[1];
             }
-
-        }
-        return bl;
-    }
-
-    function getTR(rectangles) {
-        var startRect = rectangles[0];
-        var tr = [startRect[2], startRect[3]];
-        for (var i = 1; i < rectangles.length; i++) {
-            var rect = rectangles[i];
             if (rect[2] > tr[0]) {
                 tr[0] = rect[2];
             }
             if (rect[3] > tr[1]) {
                 tr[1] = rect[3];
             }
-
         }
-        return tr;
+        return [bl[0],bl[1],tr[0],tr[1]];
     }
-    var bl = getBL(rectangles);
-    var tr = getTR(rectangles);
+
+    var bounds=getBounds(rectangles);
+    var bl=[bounds[0],bounds[1]];
+    var tr=[bounds[2],bounds[3]];
 
     function isInRectangle(unitRect, rect) {
         return (unitRect[0] >= rect[0] && unitRect[1] >= rect[1] && unitRect[2] <= rect[2] && unitRect[3] <= rect[3]);
