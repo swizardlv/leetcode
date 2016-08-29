@@ -56,6 +56,18 @@ Return false. Because two of the rectangles overlap with each other.
  * @return {boolean}
  */
 var isRectangleCover = function(rectangles) {
+    function isRepeat(rect) {
+      for (var j = rect[0]; j < rect[2]; j++) {
+        for(var k=rect[1];k<rect[3];k++){
+          var coordinate=""+j+""+k+""+(j+1)+""+(k+1);
+          if (cache[coordinate]) {
+            return true;
+          }else {
+            cache[coordinate]=1;
+          }
+        }
+      }
+    }
     function calunits(rectangles) {
         return (rectangles[2] - rectangles[0]) * (rectangles[3] - rectangles[1]);
     }
@@ -64,8 +76,13 @@ var isRectangleCover = function(rectangles) {
     var bl = [startRect[0], startRect[1]];
     var tr = [startRect[2], startRect[3]];
     var sum1 = calunits(startRect);
+    var cache={};
+    isRepeat(startRect);
     for (var i = 1; i < rectangles.length; i++) {
         var rect = rectangles[i];
+        if (isRepeat(rect)) {
+          return false;
+        }
         sum1 += calunits(rect);
         if (rect[0] < bl[0]) {
             bl[0] = rect[0];
