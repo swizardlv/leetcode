@@ -5,8 +5,22 @@
         <title>test leetcode</title>
         <script src="../149_Max_Points_on_a_Line.js" charset="utf-8"></script>
         <script type="text/javascript">
+            function Point(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            var pointsArray=[];
+            function generateArray(array){
+              var pointArray=[];
+              for (var index in array) {
+                pointArray.push(new Point(array[index][0],array[index][1]));
+              }
+              return pointArray;
+            }
+            pointsArray=generateArray([[1,1],[1,1],[2,2],[2,2]]);
             var startTime = new Date();
-            console.log(romanToInt("XCVIII"));
+
+            console.log(maxPoints(pointsArray));
             var endTime = new Date();
             console.log(endTime - startTime);
         </script>
