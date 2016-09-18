@@ -21,13 +21,14 @@ var LRUCache = function(capacity) {
  * @returns {number}
  */
 LRUCache.prototype.get = function(key) {
+
     // console.table(this.cache);
     if (this.cache[key]) {
         this.cache[key].last_index = ++this.index;
-  //      console.log(this.cache[key].value);
+        //      console.log(this.cache[key].value);
         return this.cache[key].value;
     } else {
-  //      console.log(-1);
+        //      console.log(-1);
         return -1;
     }
 };
@@ -44,7 +45,7 @@ LRUCache.prototype.set = function(key, value) {
     } else {
         if (this.cacheCount == this.capacity) {
             //find the least frequency used one
-            var lastindex = this.index+1;
+            var lastindex = this.index + 1;
             var lastkey;
             for (var _key in this.cache) {
                 if (this.cache.hasOwnProperty(_key) && this.cache[_key]) {
